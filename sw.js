@@ -1,7 +1,7 @@
 // Service worker for offline support of the kindergarten mapping tool.
 // Caches the app shell on first load so it keeps working without internet.
 
-var CACHE_NAME = "kg-mapping-cache-v12";
+var CACHE_NAME = "kg-mapping-cache-v13";
 var CORE_ASSETS = [
   "./",
   "./index.html",
@@ -43,17 +43,19 @@ self.addEventListener("fetch", function(event){
   var isSameOrigin = url.origin === self.location.origin;
 
   if(isSameOrigin){
-    // App shell: cache-first, refresh cache in background when online.
+    // App shell: network-first so updates show up immediately.
+    // Falls back to the cached copy when offline.
     event.respondWith(
-      caches.match(req).then(function(cached){
-        var networkFetch = fetch(req).then(function(response){
-          if(response && response.ok){
-            var copy = response.clone();
-            caches.open(CACHE_NAME).then(function(cache){ cache.put(req, copy); });
-          }
-          return response;
-        }).catch(function(){ return cached; });
-        return cached || networkFetch;
+      fetch(req).then(function(response){
+        if(response && response.ok){
+          var copy = response.clone();
+          caches.open(CACHE_NAME).then(function(cache){ cache.put(req, copy); });
+        }
+        return response;
+      }).catch(function(){
+        return caches.match(req).then(function(cached){
+          return cached || caches.match("./index.html");
+        });
       })
     );
   } else {
