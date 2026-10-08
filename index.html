@@ -212,7 +212,7 @@ header .hint { margin-top: 4px; color: #3a7d70; font-size: 0.78rem; }
     <span id="summaryTitle">סיכום ממצאים</span>
     <div class="sum-counts">
       <span class="cnt-k">מוקדי כח: <span id="cntK">0</span></span>
-      <span class="cnt-p">בתהליך רכישה: <span id="cntP">0</span></span>
+      <span class="cnt-p">ביצוע חלקי: <span id="cntP">0</span></span>
       <span class="cnt-c">מוקדים לחיזוק: <span id="cntC">0</span></span>
     </div>
   </div>
@@ -1448,7 +1448,7 @@ function updateSummary(){
     });
   }
 
-  if(partialByDomain.length) appendGroup(listC, "בתהליך רכישה", "subcat-partial", partialByDomain);
+  if(partialByDomain.length) appendGroup(listC, "ביצוע חלקי", "subcat-partial", partialByDomain);
   if(chizukByDomain.length) appendGroup(listC, "מוקדים לחיזוק", "subcat-chizuk", chizukByDomain);
 
   if(!listK.children.length) listK.innerHTML = '<li class="empty-msg">טרם נבחרו היגדים</li>';
@@ -1548,7 +1548,7 @@ function downloadWord(){
   });
   html += '</table>';
 
-  html += '<h2>בתהליך רכישה</h2><table dir="rtl"><tr><th>תחום</th><th>היגד</th><th>הערה</th></tr>';
+  html += '<h2>ביצוע חלקי</h2><table dir="rtl"><tr><th>תחום</th><th>היגד</th><th>הערה</th></tr>';
   DOMAINS.forEach(function(dom,di){
     dom.subs.forEach(function(sub,si){ sub.items.forEach(function(t,ii){
       var st = STATE[keyOf(dom.id,si,ii)];
