@@ -25,10 +25,12 @@ header h1 { font-size: 1.5rem; font-weight: 800; color: #1f5d54; margin-bottom: 
 header p { color: #888; font-size: 0.85rem; }
 header .privacy { margin-top: 6px; color: #c0392b; font-size: 0.82rem; font-weight: 700; }
 header .hint { margin-top: 4px; color: #3a7d70; font-size: 0.78rem; }
-.child-bar { max-width: 900px; margin: 0 auto 16px; background: #fff; border: 2px solid #bcdbd6; border-radius: 12px; padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.child-bar { max-width: 900px; margin: 0 auto 16px; background: #fff; border: 2px solid #bcdbd6; border-radius: 12px; padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .child-bar label { font-weight: 700; color: #1f5d54; white-space: nowrap; font-size: 0.9rem; }
 .child-bar input { border: 1.5px solid #b8cce0; border-radius: 7px; padding: 7px 11px; font-family: 'Heebo', sans-serif; font-size: 16px; outline: none; flex: 1; min-width: 100px; }
 .child-bar input[type="date"] { flex: 0 0 auto; min-width: 150px; }
+#childName { flex: 0 0 165px; min-width: 165px; padding: 7px 8px; }
+#childName::placeholder, #childAge::placeholder { font-size: 12px; }
 .btn-today { background: #fff; color: #2f8f80; border: 1.5px solid #2f8f80; border-radius: 7px; padding: 7px 14px; font-family: 'Heebo', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
 .btn-today:hover { background: #eaf5f3; }
 .child-bar input:focus { border-color: #2f8f80; }
@@ -197,7 +199,7 @@ header .hint { margin-top: 4px; color: #3a7d70; font-size: 0.78rem; }
   <label>שם התלמיד/ה בראשי תיבות:</label>
   <input type="text" id="childName" placeholder="ראשי תיבות (עד 3 תווים)" maxlength="3" oninput="updateSummary()">
   <label>גיל:</label>
-  <input type="text" id="childAge" placeholder="גיל..." style="max-width:70px">
+  <input type="text" id="childAge" placeholder="גיל..." style="max-width:60px">
   <label>תאריך המילוי:</label>
   <input type="date" id="evalDate">
   <button type="button" class="btn-today" onclick="setDateToday()">היום</button>
